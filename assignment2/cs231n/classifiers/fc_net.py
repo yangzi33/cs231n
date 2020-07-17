@@ -55,10 +55,7 @@ class TwoLayerNet(object):
         ############################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-        self.params['W1'] = weight_scale * np.random.randn(input_dim, hidden_dim)
-        self.params['W2'] = weight_scale * np.random.randn(hidden_dim, num_classes)
-        self.params['b1'] = np.zeros(input_dim)
-        self.params['b2'] = np.zeros(hidden_dim)
+        pass
 
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         ############################################################################
@@ -85,20 +82,13 @@ class TwoLayerNet(object):
           names to gradients of the loss with respect to those parameters.
         """
         scores = None
-        W1, W2, b1, b2 = self.params['W1'], self.params['W2'], \
-                self.params['b1'], self.params['b2']
-
         ############################################################################
         # TODO: Implement the forward pass for the two-layer net, computing the    #
         # class scores for X and storing them in the scores variable.              #
         ############################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-        # affine - relu - affine - softmax.
 
-        affine_layer = affine_forward(X, W1, b1)
-        relu_layer = relu_forward(affine_layer)
-        affine_layer2 = affine_forward(relu_layer, W2, b2)
-        score = softmax_loss(affine_layer2, y)
+        pass
 
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         ############################################################################
@@ -122,6 +112,7 @@ class TwoLayerNet(object):
         ############################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
+        pass
 
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         ############################################################################

@@ -28,8 +28,8 @@ def affine_forward(x, w, b):
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-    N, dim = x.shape[0], np.prod(x[0].shape)
-    X = x.reshape(N, dim)
+    dim = np.prod(x[0].shape)
+    X = x.reshape(x.shape[0], dim)
     out = X.dot(w) + b
 
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
@@ -62,17 +62,14 @@ def affine_backward(dout, cache):
     # TODO: Implement the affine backward pass.                               #
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
-    dim_shape = np.prod(x[0].shape)
-    N = x.shape[0]
-    X = x.reshape(N, dim_shape)
-    # input gradient
+    
+    N, D, = x.shape[0], w.shape[0] 
+    # Note that D == np.prod(x[0].shape)
+    X = x.reshape(N, D)
     dx = dout.dot(w.T)
     dx = dx.reshape(x.shape)
-    # weight gradient
     dw = X.T.dot(dout)
-    # bias gradient
-    db = dout.sum(axis=0)
+    db = dout.sum(axis=0) 
 
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
     ###########################################################################
@@ -98,7 +95,7 @@ def relu_forward(x):
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-    out = np.maximum(0, x)
+    out = np.maximum(x, 0)
 
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
     ###########################################################################
@@ -125,7 +122,8 @@ def relu_backward(dout, cache):
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-    dx = dout * (x > 0)
+    dx = dout
+    dx[x <= 0] = 0
 
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
     ###########################################################################
