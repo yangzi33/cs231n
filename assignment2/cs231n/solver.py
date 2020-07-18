@@ -27,6 +27,7 @@ class Solver(object):
     constructor. You will then call the train() method to run the optimization
     procedure and train the model.
 
+
     After the train() method returns, model.params will contain the parameters
     that performed best on the validation set over the course of training.
     In addition, the instance variable solver.loss_history will contain a list
